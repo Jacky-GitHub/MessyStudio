@@ -1,0 +1,106 @@
+#########################################################
+######## JavaScript操作文件（2） - FileReader  ###########
+#########################################################
+
+一、FileReader 对象
+      上次了解到如何获取对象的引用，在获取到对象的引用之后，便可以使用FileReader来操作对象了；
+      FileReader 功能很简单，从文件中读取数据然后保存至 JavaScript 变量中，主要有以下几个方法：
+
+        readAsText() – 返回文件内容的纯文本格式
+        readAsBinaryString() –返回文件内容的二进制格式 (不推荐– 推荐使用 readAsArrayBuffer())
+        readAsArrayBuffer() – 返回文件内容的 ArrayBuffer 格式(图片文件推荐使用)
+        readAsDataURL() – 返回文件内容的 data URL格式
+        
+     eg：
+        var reader = new FileReader();
+        reader.onload = function(event) {
+            var contents = event.target.result;
+            console.log("File contents: " + contents);
+        };
+        reader.readAsText(file);
+        
+    eg：
+        var reader = new FileReader();
+        reader.onload = function(event) {
+            var dataUri = event.target.result,
+                img     = document.createElement("img");
+
+            img.src = dataUri;
+            document.body.appendChild(img);
+        };
+        reader.readAsDataURL(file);
+        
+二、FileReader 进度与错误处理
+     FileReader 还有以下几个属性：
+        onloadstart – 表明进度开始。这是第一个触发的事件。
+        onprogress – 数据加载过程中不停觖发.
+        onerror – 数据加载失败触发.
+        onabort –当调用 abort()来取消数据加载时触发 (XMLHttpRequest和FileReader通用).
+        onload – 全部数据成功加载完毕触发。
+        onloadend – 加载结束时触发，无论是error, abort, 或者 load都触发。
+        
+        
+    用 onprogress 事件可以追踪进度。此事件携带三个数据传输过程的属性值：
+        lengthComputable – 布尔值，表明当前浏览器能否传输完整的数据。
+        loaded – 已经读取的字节数。
+        total – 要读取的字节总数。
+     eg：
+        reader.onprogress = function(event) {
+            if (event.lengthComputable) {
+                event.total;
+                event.loaded;
+            }
+        };
+        
+    错误处理：
+      即便你从硬盘中读取一个文件也有发生错误的时候。File API 规范[2]定义了四个错误类型：
+        NotFoundError – 文件找不到。
+        SecurityError – 文件或者读取过程出现安全问题。浏览器通常会留有应对此类情况的余地，但是通常载入浏览器的文件是不合法的或者当前有太多的读操作时，就会出现这个错误。
+        NotReadableError – 文件存在但是不可读，类似于没有读取权限。
+        EncodingError – 主要存在于以 data URI 的方式读取文件但结果超出了浏览支持的最大范围。
+     当读取文件时产生了一个错误，FileReader 对象的 error 属性中将产生一个含有以上错误的实例。
+     规范上就是这么说的。事实上，浏览器将此作为FileError 对象中包含有错误类型的的code属性。每个错误类型对应一个常量值：
+        FileError.NOT_FOUND_ERR 文件找不到.
+        FileError.SECURITY_ERR 安全问题。
+        FileError.NOT_READABLE_ERR 不可读。
+        FileError.ENCODING_ERR 编码问题。
+        FileError.ABORT_ERR  当没有数据可读时调用abort() 
+        
+       eg:
+          var reader = new FileReader();
+ 
+          reader.onloadend = function(event) {
+              var contents = event.target.result,
+                  error    = event.target.error;
+
+              if (error != null) {
+                  switch (error.code) {
+                      case error.ENCODING_ERR:
+                          console.error("Encoding error!");
+                          break;
+
+                      case error.NOT_FOUND_ERR:
+                          console.error("File not found!");
+                          break;
+
+                      case error.NOT_READABLE_ERR:
+                          console.error("File could not be read!");
+                          break;
+
+                      case error.SECURITY_ERR:
+                          console.error("Security issue with file!");
+                          break;
+
+                      default:
+                          console.error("I have no idea what's wrong!");
+                  }
+              } else {
+                  progressNode.max = 1;
+                  progressNode.value = 1;
+                  console.log("Contents: " + contents);
+              }
+          };
+
+          reader.readAsText(file);
+        
+      

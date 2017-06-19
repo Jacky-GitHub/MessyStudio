@@ -1,0 +1,74 @@
+#########################################################
+########    JavaScript操作文件（1） - 基础    ############
+#########################################################
+
+一、 文件类型
+       文件类型是对File的抽象，每个File实例都有如下属性：
+         name             - 文件名
+         type             - 文件MIME类型 
+         size             - 文件的字节数
+         lastModifiedDate - 文件的最后修改时间
+       一个File对象给出了文件的基本信息而无需直接访问文件的具体内容，这点很重要。
+     因为读取文件需要进行读写磁盘的操作，文件的大小直接影响了读取过程消耗的时间，
+     所以一个File对象只是一个文件的引用，而读取文件的内容则是另一个过程；
+     
+二、获得文件的引用
+     1. 使用 file 类型的input输入框 
+          <input id="your-files" type="file" />
+          <script type="text/javascript">// <![CDATA[
+          var control = document.getElementById("your-files");
+          control.addEventListener("change", function(event) {
+              var i = 0,
+                  files = control.files,
+                  len = files.length;
+
+              for (; i < len; i++) {
+                  console.log("Filename: " + files[i].name);
+                  console.log("Type: " + files[i].type);
+                  console.log("Size: " + files[i].size + " bytes");
+              }
+          }, false);
+          
+     2. 拖放文件，使用H5的 drag 和 dragover 事件，使用时必须注销掉事件的默认动作；
+          var fileInput = document.querySelector('#Myfile');
+          fileInput.addEventListener('dragover',(evt) => {
+            evt.preventDefault();
+            fileInput.style.borderColor='#4DA8E1';
+            fileInput.style.borderStyle='solid';
+          },false);
+          fileInput.addEventListener('drop',(evt) => {
+            evt.preventDefault();
+              var i = 0,
+                  files = evt.dataTransfer.files,
+                  len = files.length;
+              for (; i < len; i++) {
+                console.log(files[i]);
+                  console.log("Filename: " + files[i].name);
+                  console.log("Type: " + files[i].type);
+                  console.log("Size: " + files[i].size + " bytes");
+                  reader.readAsText(files[i]);
+              }
+            fileInput.style.borderStyle='dashed';
+            fileInput.style.borderColor='#E2E2E2';
+          },false);
+          
+ 三、手动上传文件（通过Ajax） 
+        在获取到文件的引用之后，可以通过Ajax将文件上传到服务器。
+        FormData对象 好比form表单允许你通过append()方法以键值对的方式提交到服务器。
+        FormData 对象最有用的是可以直接追加文件进去，有效果的模拟了通过Form表单上传文件。
+        
+            var form = new FormData();
+            form.append("name", "Nicholas");
+            // 加入文件的引用
+            form.append("photo", control.files[0]);
+            var xhr = new XMLHttpRequest();
+            xhr.onload = function() {
+                console.log("Upload complete.");
+            };
+            xhr.open("post", "/entrypoint", true);
+            xhr.send(form);
+         
+        通过FormData 
+
+    
+         
