@@ -1,0 +1,58 @@
+body {
+	margin: 0;
+	padding: 0;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: #333;
+}
+div.warpper {
+	margin: 60px auto;
+	width: 1125px;
+	/*height: 800px;*/
+	border-radius: 10px;
+	background: #EEEEEE;
+}
+.warpper hgroup {
+	text-align: center;
+	padding-top: 2%;
+}
+.warpper hgroup h1 {
+	font-weight: normal;
+	font-size: 50px;
+}
+.warpper hgroup h4 {
+	font-weight: normal;
+	font-size: 25px;
+}
+.warpper figure {
+	padding: 4px;
+	margin: auto;
+	width: 1025px;
+	height: 655px;
+	background: #FFFFFF;
+	border-radius: 8px;
+}
+.warpper figcaption {
+	text-align: center;
+	padding: 4px;
+	font-size: 14px;
+}
+.warpper section {
+	margin-left: 225px;
+	margin-top: 50px;
+	width: 700px;
+}
+.warpper section h3 {
+	font-weight: normal;
+	font-size: 23px;
+}
+.warpper section ul {
+	font-size: 15px;
+	line-height: 20px;
+}
+.warpper section blockquote {
+	font-size: 18px;
+}
+.warpper section cite {
+	font-size: 14px;
+}
+h3 a {text-decoration: none;}
