@@ -41,6 +41,9 @@ div#m-zol div.scroll-container{
 	margin-left: 10px;
 	margin-right: 40px;
 }
+/* 滚动条隐藏 但是 还可以滚动 */
+div#m-zol div.scroll-container ul::-webkit-scrollbar {display:none}
+
 div#m-zol span.show-menu {
 	position: absolute;
 	right: 0px;
