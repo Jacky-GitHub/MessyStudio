@@ -173,7 +173,7 @@ nav.home-nav ul li.search form button {
 	transition:0.2s;
 }
 nav.home-nav ul li.search form button i {
-	font-size:25px;
+	font-size:25	px;
 	line-height:46px;
 }
 nav.home-nav ul li.search form input[type="text"]:focus{
