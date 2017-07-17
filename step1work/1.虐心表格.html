@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>表格</title>
+	<style>
+		body {
+			margin:0;
+			padding: 0;
+			background: #F4F5F5;
+		}
+		div.warpper {
+			margin:0 auto;
+			margin-top: 100px;
+			width: 600px;
+			height: 300px;
+		}
+		div.warpper table {
+			width: 100%;
+			height: 100%;
+			text-align: center;
+			font-weight: bold;
+			font-size: 13px;
+			outline: none;
+			/* border-collapse: collapse; */
+		}
+		div.warpper table {
+			/* 表格布局方式 */
+			table-layout: fixed;
+		}
+		div.warpper table td {
+			/* border:1px solid #CCCCCC; */
+			 box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.2);
+		}
+		td.telloww{
+			 background: #FFFEC7;
+		}
+		td.bluee {
+			background: #CBFFFF;
+		}
+		td.greenn {
+			background: #CDFF9B;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="warpper">
+		<table contenteditable="true" cellpadding="10" cellspacing="10"> 
+			<tr>
+				 <td class="telloww">1</td> 
+				 <td class="telloww">2</td> 
+				 <td class="bluee" colspan="4" rowspan="2">3</td> 
+				 <td class="bluee" colspan="2" rowspan="2">4</td> 
+			</tr>
+			<tr> 
+				<td class="telloww">5</td>
+				<td class="telloww">6</td> 
+			</tr> 
+			<tr> 
+				<td class="bluee" colspan="2" rowspan="4">7</td> 
+				<td class="greenn">8</td> 
+				<td class="greenn" colspan="2">9</td> 
+				<td class="greenn">10</td> 
+				<td class="bluee" colspan="2" rowspan="4">11</td>
+		    </tr> 
+			<tr> 
+				<td class="greenn" rowspan="2">12</td> 
+				<td class="telloww">13</td> 
+				<td class="telloww">14</td> 
+				<td class="greenn" rowspan="2">15</td> 
+			</tr>
+			<tr> 
+				<td class="telloww">16</td> 
+				<td class="telloww">17</td> 
+			</tr>
+			<tr> 
+				<td class="greenn">18</td> 
+				<td class="greenn" colspan="2">19</td> 
+				<td class="greenn">20</td> 
+			</tr>
+			<tr> 
+				<td class="bluee" colspan="2" rowspan="2">21</td> 
+				<td class="bluee" colspan="4" rowspan="2">22</td> 
+				<td class="telloww">23</td> 
+				<td class="telloww">24</td>
+			</tr>
+			<tr>
+				<td class="telloww">25</td> 
+				<td class="telloww">26</td> 
+			</tr>  
+		</table> 
+	</div>
+</body>
+</html>

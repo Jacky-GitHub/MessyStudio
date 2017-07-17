@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>表单实战（一）</title>
+	<style type="text/css">
+		body {
+			margin: 0;
+			padding: 0;
+			font-size: 14px;
+		}
+		.wrapper {
+			margin: 0px auto;
+			width: 650px;
+			height: 400px;
+			background: #DDEFFE;
+			border: 1px solid #ABB5C0;
+			border-radius: 4px;
+			box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
+		}
+		.title {
+			margin: 5px;
+		}
+		.container {
+			background: white;
+			width: 640px;
+			height:367px;
+			margin: 5px;
+			box-sizing: border-box;
+			border:1px solid #ACB7B9;
+			position: relative;
+		}
+		.tip {
+			width: 100%;
+			height: 40px;
+			margin: 0;
+			background: #FFFEE8;
+			padding-left: 20px;
+			box-sizing: border-box;
+			line-height: 40px;
+		}
+		.body table {
+			width: 560px;
+			height: 240px;
+			margin: 10px auto;
+			border: 1px solid #AEB6B9;
+			border-collapse: collapse;
+			table-layout: fixed;
+		}
+		td {
+			border:1px solid #AEB6B9;
+			text-align: center;
+			word-spacing: 2em;
+		}
+		td:nth-child(odd) {
+			background: #E8F0FC;
+			width: 90px;
+		}
+		input[type="text"],select,textarea {
+			height: 27px;
+			width: 177px;
+			outline: none;
+			margin: 0;
+			padding: 0;
+		}
+		textarea {
+			height: 25px;
+			width: 459px;
+		}
+		.control {
+			width: 100%;
+			height: 35px;
+			border-top: 1px solid #DCDCDC;
+			background: #F4F4F4;
+			position: absolute;
+			bottom: 0;
+		}
+		button {
+			background: white;
+			outline: 0;
+			border-radius: 20px;
+			width: 80px;
+			height: 25px;
+			border: 1px solid #DCDCDC;
+			margin: 5px;
+			float: right;
+		}
+		button::first-letter {
+			color: #9ED67A;
+		}
+	</style>
+</head>
+<body>
+<div class="wrapper">
+	<div class="title">💡 创建简历</div>
+	<div class="container">
+		<header class="tip">💡 注意：录入个人简历</header>
+		<section class="body">
+			<table>
+				<tr>
+					<td>姓 名</td>
+					<td><input type="text" name="name"></td>
+					<td>性 别</td>
+					<td><select><option>男</option><option>女</option></select></td>
+				</tr>
+				<tr>
+					<td>手机号码</td>
+					<td><input type="text" name="phone"></td>
+					<td>电子邮箱</td>
+					<td><input type="text" name="email"></td>
+				</tr>
+				<tr>
+					<td>教育程度</td>
+					<td><input type="text" name="edu"></td>
+					<td>工作职位</td>
+					<td><input type="text" name="work"></td>
+				</tr>
+				<tr>
+					<td>工作城市</td>
+					<td><input type="text" name="city"></td>
+					<td>期望薪资</td>
+					<td><input type="text" name="money"></td>
+				</tr>
+				<tr>
+					<td>自我介绍</td>
+					<td colspan="3"><textarea></textarea></td>
+				</tr>
+				<tr>
+					<td>特长</td>
+					<td colspan="3"><textarea></textarea></td>
+				</tr>
+				<tr>
+					<td>地址</td>
+					<td colspan="3"><textarea></textarea></td>
+				</tr>
+			</table>
+		</section>
+		<footer class="control">
+			<button>✖ 关闭</button>
+			<button>✔ 添加</button>
+		</footer>
+	</div>
+</div>
+</body>
+</html>

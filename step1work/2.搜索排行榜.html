@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>搜索排行榜</title>
+	<style type="text/css">
+		body,ul {
+			margin: 0;
+			padding: 0;
+			font-size: 14px;
+		}
+		ul {
+			list-style: none;
+			width: 300px;
+			margin: 0 auto;
+			padding: 0 10px;
+			background: white;
+		}
+		li {
+			width: 100%;
+			height: 35px;
+			border-bottom: 1px solid #F3F3F3;
+			line-height:33px;
+		}
+		a {
+			text-decoration:none;
+		}
+		li span {
+			display: inline-block;
+			vertical-align: middle;
+			color: #4F4FDA;
+		}
+		.sort {
+			text-align: center;
+			width: 16px;
+			height: 16px;
+			background: #8EB9F5;
+			color: white;
+			font-size: 12px;
+			line-height: 16px;
+		}
+		.rise,.down,.num {
+			float: right;
+			padding-left:5px;
+		}
+		.rise {
+			color: red;
+		}
+		.down {
+			color: green;
+		}
+		.num {
+			color: #463933;
+		}
+		li:nth-of-type(1) .sort{
+			background: #F54545;
+		}
+		li:nth-of-type(2) .sort {
+			background: #FF8547;
+		}
+		li:nth-of-type(3) .sort {
+			background: #FFAC38;
+		}
+	</style>
+</head>
+<body>
+<ul class="wrapper">
+	<li>
+		<a href="#">
+			<span class="sort">1</span>
+			<span class="content">柯洁对战阿尔法狗</span>
+			<span class="rise">↑</span>
+			<span class="num">640861</span>
+		</a>
+	</li>
+	<li>
+		<a href="#">
+			<span class="sort">2</span>
+			<span class="content">留美学生演讲辱华</span>
+			<span class="rise">↑</span>
+			<span class="num">513549</span>
+		</a>
+	</li>
+	<li>
+		<a href="#">
+			<span class="sort">3</span>
+			<span class="content">大象倒地压死猎人</span>
+			<span class="rise">↑</span>
+			<span class="num">273449</span>
+		</a>
+	</li>
+	<li>
+		<a href="#">
+			<span class="sort">4</span>
+			<span class="content">胡歌奶奶灰造型</span>
+			<span class="rise">↑</span>
+			<span class="num">73706</span>
+		</a>
+	</li>
+	<li>
+		<a href="#">
+			<span class="sort">5</span>
+			<span class="content">刷卡买包烟欠3亿</span>
+			<span class="down">↓</span>
+			<span class="num">37203</span>
+		</a>
+	</li>
+	<li>
+		<a href="#">
+			<span class="sort">6</span>
+			<span class="content">英国曼城发生爆炸</span>
+			<span class="rise">↑</span>
+			<span class="num">35682</span>
+		</a>
+	</li>
+	<li>
+		<a href="#">
+			<span class="sort">7</span>
+			<span class="content">日本在华间谍被拘</span>
+			<span class="rise">↑</span>
+			<span class="num">33852</span>
+		</a>
+	</li>
+	<li>
+		<a href="#">
+			<span class="sort">8</span>
+			<span class="content">生化危机确认重启</span>
+			<span class="down">↓</span>
+			<span class="num">33589</span>
+		</a>
+	</li>
+	<li>
+		<a href="#">
+			<span class="sort">9</span>
+			<span class="content">女子高速光脚开车</span>
+			<span class="down">↓</span>
+			<span class="num">25321</span>
+		</a>
+	</li>
+	<li>
+		<a href="#">
+			<span class="sort">10</span>
+			<span class="content">迪士尼黄牛泛滥</span>
+			<span class="down">↓</span>
+			<span class="num">16844</span>
+		</a>
+	</li>
+</ul>
+</body>
+</html>
