@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		html,body,ul{margin:0;padding:0;perspective: 1500px;}
+		.wrapper {
+			list-style-type:none;
+			width:80px;
+			height:80px;
+		
+			position:absolute;
+			top:350px;
+			left:8%;
+			z-index: 30;
+			transform-style:preserve-3d;
+			transform:  rotateX(70deg);
+			animation: run 10s linear infinite;
+		}
+		.wrapper:hover {
+			animation-play-state: paused;
+		}
+		.wrapper li {
+			box-sizing: border-box;
+			padding:10px;
+			border-radius: 4px;
+			background:#E7E7E7;
+			position:absolute;
+			width:80px;
+			height:80px;
+			border:1px solid #E7E7E7;
+			box-shadow:0 -1px 0 1px rgba(255,255,255,0.8),
+					  -1px 0 0 1px #D7D7D7,
+					  1px 0px 0 1px #D7D7D7,
+					  0 1px 0 1px #BBBBBB;
+			display:-webkit-flex;
+			display:flex;
+			/*opacity: 0.5;*/
+		}
+		.wrapper li section {
+			display:-webkit-flex;
+			display:flex;
+		}
+		.wrapper .one {
+			transform: translateZ(80px);
+			justify-content: center;
+			flex-direction:row;
+			flex-wrap:nowrap;
+			align-items:center;
+		}
+		.wrapper .one .point {
+			width:30px;
+			height:30px;
+			background:#EA0009;
+			box-shadow:inset 0 0 13px 2px black;
+			border-radius:50%;
+		}
+
+		.wrapper .two {
+			justify-content: space-around;
+			flex-direction: column;
+			align-items:center;
+			transform:  translateZ(80px) rotateY(90deg);
+			transform-origin:left center;
+		}
+
+		.wrapper .two .point {
+			width:20px;
+			height:20px;
+			background:#021670;
+			box-shadow:inset 0 0 10px 1px black;
+			border-radius:50%;
+		}
+
+		.wrapper .three {
+			transform: translateZ(80px) rotateX(90deg);
+			transform-origin: center bottom;
+			justify-content: space-around;
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.wrapper .three .point {
+			width:20px;
+			height:20px;
+			background:#333;
+			box-shadow:inset 0 0 10px 1px black;
+			border-radius:50%;
+		}
+		.wrapper .three .point:nth-child(1) {
+			align-self: flex-start;
+		}
+		.wrapper .three .point:nth-child(3) {
+			align-self: flex-end;
+		}
+
+		.wrapper .four {
+			transform: translateZ(80px) rotateX(-90deg);
+			transform-origin: top center;
+			justify-content: space-around;
+			flex-direction: column;
+
+		}
+		.wrapper .four section {
+			justify-content: space-around;
+		}
+
+		.wrapper .four .point {
+			width:20px;
+			height:20px;
+			background:#333;
+			box-shadow:inset 0 0 10px 1px black;
+			border-radius:50%;
+		}
+
+
+		.wrapper .five {
+			transform: translateZ(80px) rotateY(-90deg); 
+			transform-origin: right bottom;
+			justify-content: space-around;
+			flex-direction: column;
+		}
+
+		.wrapper .five section {
+			justify-content: space-between;
+		}
+		.wrapper .five section:nth-child(2) {
+			justify-content: center;
+		}
+		.wrapper .five .point {
+			width:20px;
+			height:20px;
+			background:#021670;
+			box-shadow:inset 0 0 10px 1px black;
+			border-radius:50%;
+		}
+
+		.wrapper .six {
+			justify-content: space-around;
+			flex-direction: column;
+		}
+
+		.wrapper .six section {
+			justify-content: space-around;
+		}
+		.wrapper .six .point {
+			width:20px;
+			height:20px;
+			background:#333;
+			box-shadow:inset 0 0 10px 1px black;
+			border-radius:50%;
+		}
+
+
+		.desktop {
+			width:100%;
+			height:600px;
+			border:1px solid red;
+			background:#292929;
+			transform:rotateX(70deg) ;
+			position:absolute;
+			z-index: 20;
+			top:0px;
+		}
+
+		@keyframes run {
+			0% {
+					transform:  rotateX(0deg) ;
+				}
+			15% {
+				transform:translateY(-160px) translateZ(-10px)  rotateX(100deg)  ;
+			}
+			50% {
+				transform:translateY(-160px) translateZ(-10px) translateX(800px) rotateX(100deg)  rotateY(100deg);
+			}
+			75% {
+				transform:translateY(0px) translateZ(0px)  translateX(800px) rotateX(-100deg)  ;
+			}
+			100% {
+				transform:translateY(0px) translateZ(0px)  translateX(20px) rotateX(70deg)  ;
+			}
+		}
+	</style>
+</head>
+<body>
+	<ul class="wrapper">
+		<li class="one">
+			<div class="point"></div>
+		</li>
+		<li class="two">
+			<div class="point"></div>
+			<div class="point"></div>
+		</li>
+		<li class="three">
+			<div class="point"></div>
+			<div class="point"></div>
+			<div class="point"></div>
+		</li>
+		<li class="four">
+			<section>
+				<div class="point"></div>
+				<div class="point"></div>
+			</section>
+			<section>
+				<div class="point"></div>
+				<div class="point"></div>
+			</section>
+		</li>
+		<li class="five">
+			<section>
+				<div class="point"></div>
+				<div class="point"></div>
+			</section>
+			<section>
+				<div class="point"></div>
+			</section>
+			<section>
+				<div class="point"></div>
+				<div class="point"></div>
+			</section>
+		</li>
+		<li class="six">
+			<section>
+				<div class="point"></div>
+				<div class="point"></div>
+			</section>
+			<section>
+				<div class="point"></div>
+				<div class="point"></div>
+			</section>
+			<section>
+				<div class="point"></div>
+				<div class="point"></div>
+			</section>
+		</li>
+	</ul>
+	<div class="desktop">
+		
+	</div>
+</body>
+</html>

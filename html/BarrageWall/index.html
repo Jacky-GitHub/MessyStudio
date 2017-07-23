@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div.view-container {
+            width: 95%;
+            height: 420px;
+            margin: 15px auto;
+            border: 1px solid #FF6700;  
+            border-radius: 10px;
+            position: relative;  
+            overflow: hidden;
+        }
+        div.view-container span{
+            position: absolute;
+            white-space:nowrap;
+        }
+        div.input,div.button {
+            text-align: center;
+        }
+        div.input input {
+            padding: 0 10px;
+            width: 400px;
+            height: 35px;
+            color: #333;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 13px;
+            outline: none;
+            transition: all 0.3s;
+        }
+        div.input input:focus {
+            border: 1px solid #FF6700;
+            transition: all 0.8s;
+        }
+        div.button button {
+            margin: 15px 15px 0 15px;
+            width: 180px;
+            height: 35px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            outline: none;
+            color: #bbb;
+            border-radius: 5px;
+        }
+        div.button button:first-child {
+            border: 1px solid #FF6700;
+            color:#FF6700;
+        }
+        div.button button:first-child:active {
+            background-color: #FF6700;
+            color: #fff;
+        }
+         div.button button:last-child:active {
+            background-color: #ddd;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="view-container" id="container" >
+
+    </div>
+    <div class="input">
+         <input type="text" id="textInfo" placeholder="说点什么？" autofocus>
+    </div>
+    <div class="button">
+        <button id="send">发射 (send)</button> <button id="clear">清屏 (clear)</button>
+    </div>
+    <script>
+        window.onload = function() {
+            
+            var allSpan = {};
+            var send = document.querySelector('#send');
+            send.addEventListener('click',function() {
+                let str = document.querySelector("#textInfo");
+                if (str.value) {
+                   var bbb = new Barrage(str.value,10,100);
+                   allSpan[bbb._id] = bbb;
+                }
+                str.value = "";
+            });
+
+            var input = document.querySelector('#textInfo');
+            input.onkeydown = function(evt) {
+                if (evt.keyCode == 13) {
+                    if (input.value) {
+                        var bbb = new Barrage(input.value,10,100);
+                        allSpan[bbb._id] = bbb;
+                        input.value = '';
+                    }
+                }
+            }
+
+            var clear = document.querySelector('#clear');
+            clear.addEventListener('click',function() {
+                for (let k in allSpan) {
+                    allSpan[k].stop();
+                }
+                allSpan = {};
+            });
+
+            // 单条弹幕的构造函数
+            function Barrage(text,runCount,speed){
+                this._id = "AUTO_"+(new Date().getTime());
+                this._text = text;                          // 弹幕内容
+                this._color = this.randomColor();           // 弹幕颜色
+                this._runNum = 0;                           // 已循环次数
+                this._runCount = runCount;                  // 总执行次数
+                this._top = this.radomTop();                // 
+                this._right = this.randomRight();           //
+                this._speed = speed;                        // 运行速度
+                this._interval = null;    
+                this.init();      
+            }
+            Barrage.prototype.init = function(){
+                let curSpan = `<span style="color:`+this._color+`;top:`+this._top+`%;right:`+this._right+`%;"
+                                     id="`+this._id+`">`+this._text+`</span>`;
+                document.querySelector('#container').innerHTML += curSpan;
+                this._start();
+            }
+            Barrage.prototype.run = function() {
+                // debugger
+                // 如果弹幕将要运行完毕一次
+                if (this._right > 98) {
+                    this._runNum += 1;
+                    this._top = this.radomTop();
+                    this._right = -50;
+                    if (this._runNum >= this._runCount) {
+                        this.stop();
+                        return;
+                    }
+                }
+                this._right += 1;
+                let cur = document.querySelector("#"+this._id);
+                if (cur) {
+                    cur.style.right = this._right+"%";
+                    cur.style.top = this._top+"%";
+                }
+            }
+            Barrage.prototype._start = function() {
+                if (!this._interval) {
+                    this._interval = setInterval(this.run.bind(this),this._speed);
+                }
+            }
+            Barrage.prototype.stop = function() {
+                clearInterval(this._interval);
+                let cur = document.querySelector("#"+this._id);
+                if (cur) {
+                    cur.parentNode.removeChild(cur);
+                }
+            }
+            Barrage.prototype.radomTop = function() {
+                return ((((Math.random() * 80) | 0) + 5));
+            }
+            Barrage.prototype.randomRight = function() {
+                return 1;
+            } 
+            Barrage.prototype.randomColor = function() {
+                const colors = ['red','green','blue','yellow','pink','#333'];
+                return colors[(Math.random() * colors.length) | 0];
+            }
+
+        }
+    </script>
+</body>
+</html>
