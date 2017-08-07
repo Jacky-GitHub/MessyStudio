@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta name="keywords" content=" " >
+    <meta name="description" content=" " >
+    <title>三栏式布局使用浮动与margin完成</title>
+    <style>
+        * {
+            margin:0;
+            padding: 0;
+        }
+        .wrapper {
+            border: 1px solid #999;
+            margin: 20px;
+            background: #eee;
+            padding: 20px;
+        }
+        .left {
+            width: 200px;
+            height: 150px;
+            border: 1px  solid #999;
+            background: white;
+            float: left; 
+        }
+        article {
+            height: 450px;
+            margin: 0 140px 0 220px;
+            border: 1px  solid #999;
+            background: white;
+        }
+        .right {
+            width: 120px;
+            height: 450px;
+            border: 1px  solid #999;
+            background: white;
+            float: right;  
+        } 
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <aside class="left">
+
+        </aside>
+        
+        <aside class="right">
+
+        </aside>
+        <article></article>
+        
+    </div>
+</body>
+</html>
