@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+         /* 此方案需要确定 wrapper的宽度与高度  */
+        .wrapper-bak {
+            position: absolute;
+            top: 0;
+            right: 0; 
+            bottom: 0;
+            left: 0; 
+            width: 400px;
+            height: 200px; 
+            background: #ccc;
+            margin:auto;
+        }
+
+        /* 此方案不需要确定外层div的高度，  */
+        .wrapper {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 400px;
+            /* height: 200px;   */
+            background: #ccc;
+            transform: translate(-50%,-50%);
+        }
+        .content {
+            height: 200px;
+        }
+
+        .wrapper::before,
+        .wrapper::after {
+            content: "";
+            display: block;
+            width: 50px;
+            height: 50px;
+            background: #fc0;
+            position: absolute;
+            border-radius: 0 0 50px 0;
+        }
+         .wrapper::after {
+             right: 0;
+             bottom: 0;
+             border-radius: 50px 0 0px 0;
+         }
+    </style>
+</head>
+<body>
+   
+
+    <div class="wrapper">
+        <div class="content"></div>
+    </div>
+</body>
+</html>

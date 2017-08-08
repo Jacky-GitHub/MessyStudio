@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {margin: 0;padding: 0;}
+        body > header,
+        body > footer {
+            width: 100%;
+            height: 60px;
+            background: #363636;
+        }
+        main {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 20px; 
+            background: #dcdcdc;
+            display: flex; 
+            display: -webkit-flex; 
+            justify-content: space-between; 
+            flex-direction: row; 
+            min-width: 1000px;
+        }
+
+        main section {
+            flex: 0 1 auto; 
+            margin-right: 20px;
+        }
+
+        main section article {
+            background: #fff;
+            border: 1px solid #999;
+            margin:20px 0;
+            padding: 20px;
+        }
+         main section article h3 {
+            color: #808080;
+        }
+        main section article:first-child {
+            margin-top: 0;
+        }
+
+        main aside {
+            flex: 0 0 450px;
+            border: 1px solid #999;
+            height: 600px;
+            border: 1px solid #999;
+        }
+
+    
+    </style>
+</head>
+<body>
+    <header></header>
+    <main> 
+        <section>
+            <article>
+                <header>
+                    <h2>一级标题</h2>
+                    <h3>二级标题</h3>
+                     <p><span class="author">作者信息</span><time>2017.3.1</time></p>
+                </header>       
+                <p class="content">
+                    网上 Python 的爬虫教程很多，而自己的主语言是 Java，本着宣传 Java，以练促学的目的，我使用 Java 爬取了知乎 60 万用户信息， 主要想看看知乎上妹子多不多啊/是不是都是基佬啊，标配常青藤/年薪百万是不是真的啊，等等。 这是一个到课程该任务的链接 http://ife.baidu.com/course/detail/id/90
+上面的作者名加了 span 标签，Python 加了 em 标签，第一个 Java 加了 strong 标签
+                </p>
+            </article>
+
+            <article>
+                <header>
+                    <h2>图片</h2>
+                </header>
+                <section class="content">
+                    
+                </section>
+            </article>
+        </section>
+        <aside>
+
+        </aside>
+    </main>
+    <footer></footer>
+</body>
+</html>
