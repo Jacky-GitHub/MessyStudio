@@ -29,6 +29,8 @@ a { text-decoration: none; }
 .banner__container__susbox p { width: 300px; font-size: 21px; line-height: 35px; margin: 35px 0 45px 10px; }
 .banner__container__susbox a { display: block; width: 330px; height: 65px; margin-left: 10px; font-size: 30px; line-height: 63px; text-align: center; background: #e74f4d; color: white; }
 
-.intro { width: 100%; height: 250px; background: red; }
+.intro { width: 100%; height: 250px; }
+.intro__item { box-sizing: border-box; width: 25%; height: 100%; display: inline-block; float: left; background: #f5f; border: 1px solid blue; }
+.intro::before, .intro::after { content: ""; display: table; clear: both; }
 
 /*# sourceMappingURL=index.css.map */
