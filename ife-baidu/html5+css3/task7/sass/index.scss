@@ -7,7 +7,7 @@ header,
 footer,
 h1,h2,h3,h4,
 ul{margin:0;padding: 0;}
-body {min-width: 1280px;font: normal normal normal 16px/24px "Microsoft YaHei","PingFang SC","黑体";}
+body {min-width: 1280px;font: normal normal normal 16px/24px "Microsoft YaHei","PingFang SC",STHeiti;}
 ul {list-style-type: none;}
 a {text-decoration: none;}
 
@@ -31,7 +31,7 @@ a {text-decoration: none;}
             display: block;
             width: 100%;
             height: 100%;
-            font: 21px/57px "黑体";
+            font: 21px/57px STHeiti;
             color: #393a3a;
             position: relative;
             img {
@@ -145,20 +145,31 @@ a {text-decoration: none;}
     width: 100%;
     height: 250px;
     &__item {
-        box-sizing: border-box;
         width: 25%;
         height: 100%;
-        display: inline-block;
         float: left;
-        background: #f5f;
-        border: 1px solid blue;
+        img {
+            display: block;
+            margin: 40px auto;
+        }
+        p {
+            font: 14px/24px STHeiti;
+            box-sizing: border-box;
+            text-align: center;
+            width: 100%;
+            padding: 0 23%;
+        }
     }
-
+    &__item:not(:last-child) p {
+        border-right: 2px solid #bbb;
+    }
     &::before,&::after {
         content: "";
         display: table;
         clear: both;
     }
 }
+
+// about
 
 
