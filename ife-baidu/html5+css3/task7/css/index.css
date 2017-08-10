@@ -1,6 +1,6 @@
 body, section, article, header, footer, h1, h2, h3, h4, ul { margin: 0; padding: 0; }
 
-body { min-width: 1280px; font: normal normal normal 16px/24px "Microsoft YaHei","PingFang SC",STHeiti; }
+body { min-width: 1280px; font: normal normal normal 16px/24px "PingFang SC",STHeiti; }
 
 ul { list-style-type: none; }
 
@@ -55,5 +55,12 @@ select::-ms-expand { display: none; }
 .search__container .wrapper__input::before { content: ""; display: block; width: 17px; height: 17px; background: #be4e48; position: absolute; right: 6px; top: 9px; }
 .search__container .wrapper__input::after { content: ""; display: block; width: 8px; height: 8px; border-left: 1px solid #fff; border-bottom: 1px solid #fff; position: absolute; right: 10px; top: 10px; transform: rotate(-45deg); }
 .search__container--isub { width: 235px; height: 35px; margin: 50px 10px; background: #be4e48; outline: none; border: none; font-size: 14px; word-spacing: 2em; color: white; }
+
+.activity { width: 100%; background: #f7f7f7; font-size: 0; text-align: center; padding: 100px 0 110px 0; }
+.activity__item { display: inline-block; font-size: 20px; margin: 0 20px; vertical-align: top; }
+.activity__item--img { border: 1px solid #dadada; padding: 10px 6px; background: #fff; }
+.activity__item--title { margin-top: 10px; font-size: 16px; font-weight: normal; }
+.activity__item--desc { font-size: 12px; margin: 5px 0; color: #9f9f9f; }
+.activity__item:nth-child(2) .activity__item--title { letter-spacing: 1.5em; font-size: 20px; text-align: right; }
 
 /*# sourceMappingURL=index.css.map */

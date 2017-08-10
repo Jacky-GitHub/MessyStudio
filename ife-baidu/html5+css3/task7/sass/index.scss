@@ -6,7 +6,7 @@ header,
 footer,
 h1,h2,h3,h4,
 ul{margin:0;padding: 0;}
-body {min-width: 1280px;font: normal normal normal 16px/24px "Microsoft YaHei","PingFang SC",STHeiti;}
+body {min-width: 1280px;font: normal normal normal 16px/24px "PingFang SC",STHeiti;}
 ul {list-style-type: none;}
 a {text-decoration: none;}
 select::-ms-expand { display: none; }
@@ -279,3 +279,37 @@ select::-ms-expand { display: none; }
     }
 }
 
+// activity
+.activity {
+    width: 100%;
+    background: #f7f7f7;
+    font-size: 0;
+    text-align: center;
+    padding: 100px 0 110px 0;
+    &__item {
+        display: inline-block;
+        font-size: 20px;
+        margin: 0 20px;
+        vertical-align: top;
+        &--img {
+            border: 1px solid #dadada;
+            padding: 10px 6px;
+            background: #fff;
+        }
+        &--title {
+            margin-top: 10px;
+            font-size: 16px;
+            font-weight: normal;
+        }
+        &--desc {
+            font-size: 12px;
+            margin:5px 0;
+            color: #9f9f9f;
+        }
+        &:nth-child(2) &--title{
+            letter-spacing:1.5em;
+            font-size: 20px;
+            text-align: right;
+        }
+    }
+}
