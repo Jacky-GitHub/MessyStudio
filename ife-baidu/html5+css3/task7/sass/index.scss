@@ -507,12 +507,13 @@ select::-ms-expand { display: none; }
         }
         
     }
-    &__form {
+    &__form {    
         float: right;
         margin-top: 90px;
         width: 640px;
         text-align: justify;
         &--text {
+            font-family: "PingFang SC";
             width: 270px;
             height: 40px;
             border: none;
@@ -522,6 +523,7 @@ select::-ms-expand { display: none; }
             margin: 10px 0;
         }
         &--textarea {
+            font-family: "PingFang SC";
             box-sizing: border-box;
             width: 100%;
             height: 100px;
@@ -533,6 +535,7 @@ select::-ms-expand { display: none; }
             margin: 10px 0;
         }
         &--submit {
+            font-family: "PingFang SC";
             width: 100%;
             height: 40px;
             outline: none;
@@ -541,5 +544,84 @@ select::-ms-expand { display: none; }
             font-size: 14px;
         }
     }
+}
+//  concat
+.contact {
+    background: #32353e;
+    text-align: center;
+    color: #fff;
+    padding: 100px 0 50px;
+    &__title {
+        font-size: 21px;
+    }
+    &__info {
+        font:12px "宋体";
+    }
+    &__email {
+        width: 400px;
+        height: 40px;
+        border: none;
+        outline: none;
+        font-size: 14px;
+        padding: 0 15px;
+        margin-top: 15px;
+    }
+    &__submit {
+        width: 80px;
+        height: 40px;
+        border: none;
+        outline: none;
+        background: #6f7178;
+        color: white;
+        font: 16px "PingFang SC";
+        text-align: center;
+        padding: 0;
+        margin-top: 15px;
+        vertical-align: bottom;
+    }
+    &__social {
+        li {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            margin: 30px 10px;
+            a {
+                display: block;
+                width: 100%;
+                height: 100%;
+                background: url(../images/social.png) no-repeat;
+            }
+            &[class$="--weibo"] a {
+                background-position: -50px;
+            }
+            &[class$="--twitter"] a {
+                background-position: -105px;
+            }
+            &[class$="--website"] a {
+                background-position: right;
+            }
+        }
+    }
 
 }
+
+// footer
+.footer {
+    // width: 100%;
+    padding:  0 60px;
+    height: 60px;
+    background: #303039;
+    color: #fff;
+    &__copyright {
+        font: 12px/60px "宋体";
+        float: left;
+    }
+    &__backtop {
+        font: 12px/60px "宋体";
+        float: right;
+        a {
+            color: #fff;
+        }
+    }
+}
+

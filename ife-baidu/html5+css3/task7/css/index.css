@@ -101,8 +101,24 @@ select::-ms-expand { display: none; }
 .joinUs__protocol--more { font-size: 12px; color: #9d9b9a; float: right; }
 .joinUs__protocol--more::before { content: "◇"; margin-right: 5px; }
 .joinUs__form { float: right; margin-top: 90px; width: 640px; text-align: justify; }
-.joinUs__form--text { width: 270px; height: 40px; border: none; outline: none; background: #EDEDEF; padding: 0 20px; margin: 10px 0; }
-.joinUs__form--textarea { box-sizing: border-box; width: 100%; height: 100px; resize: none; padding: 10px 20px; border: none; outline: none; background: #EDEDEF; margin: 10px 0; }
-.joinUs__form--submit { width: 100%; height: 40px; outline: none; border: none; background: #EDEDEF; font-size: 14px; }
+.joinUs__form--text { font-family: "PingFang SC"; width: 270px; height: 40px; border: none; outline: none; background: #EDEDEF; padding: 0 20px; margin: 10px 0; }
+.joinUs__form--textarea { font-family: "PingFang SC"; box-sizing: border-box; width: 100%; height: 100px; resize: none; padding: 10px 20px; border: none; outline: none; background: #EDEDEF; margin: 10px 0; }
+.joinUs__form--submit { font-family: "PingFang SC"; width: 100%; height: 40px; outline: none; border: none; background: #EDEDEF; font-size: 14px; }
+
+.contact { background: #32353e; text-align: center; color: #fff; padding: 100px 0 50px; }
+.contact__title { font-size: 21px; }
+.contact__info { font: 12px "宋体"; }
+.contact__email { width: 400px; height: 40px; border: none; outline: none; font-size: 14px; padding: 0 15px; margin-top: 15px; }
+.contact__submit { width: 80px; height: 40px; border: none; outline: none; background: #6f7178; color: white; font: 16px "PingFang SC"; text-align: center; padding: 0; margin-top: 15px; vertical-align: bottom; }
+.contact__social li { display: inline-block; width: 30px; height: 30px; margin: 30px 10px; }
+.contact__social li a { display: block; width: 100%; height: 100%; background: url(../images/social.png) no-repeat; }
+.contact__social li[class$="--weibo"] a { background-position: -50px; }
+.contact__social li[class$="--twitter"] a { background-position: -105px; }
+.contact__social li[class$="--website"] a { background-position: right; }
+
+.footer { padding: 0 60px; height: 60px; background: #303039; color: #fff; }
+.footer__copyright { font: 12px/60px "宋体"; float: left; }
+.footer__backtop { font: 12px/60px "宋体"; float: right; }
+.footer__backtop a { color: #fff; }
 
 /*# sourceMappingURL=index.css.map */
