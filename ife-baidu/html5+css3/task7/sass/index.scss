@@ -4,6 +4,8 @@ section,
 article,
 header,
 footer,
+figure,
+figcaption,
 h1,h2,h3,h4,
 ul{margin:0;padding: 0;}
 body {min-width: 1280px;font: normal normal normal 16px/24px "PingFang SC",STHeiti;}
@@ -312,4 +314,184 @@ select::-ms-expand { display: none; }
             text-align: right;
         }
     }
+}
+
+// sintro
+.sintro {
+    width: 100%;
+    overflow: auto;
+    &__figure {
+        float: left;
+        width: 850px;
+        height: 566px;
+        position: relative;
+        figcaption {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            text-align: center;
+            color: white;
+            h1 {
+                font-size: 50px;
+                font-weight: normal;
+            }
+            h2 {
+                font-size: 158px;
+                margin: 80px 0;
+            }
+            p {
+                font-size: 22px;
+            }
+            time {
+                font-size: 22px;
+            }
+        }
+
+    }
+    &__section {
+        float: left;
+        width: 430px;
+        height: 522px;
+        text-align: center;
+        
+        &--title{
+            font-weight: normal;
+            line-height: 35px;
+            margin-top: 170px;
+            span {
+                color: #e74f4d;
+            }
+        }
+        &--info {
+            width: 300px;
+            margin: 20px auto;
+            font: 12px/24px "PingFang SC";
+            text-align: start;
+            color: #b0b0b0;
+
+        }
+        &--smbd {
+            @extend .search__container--smbd;
+        }
+        &--more {
+            display: block;
+            margin: 40px auto;
+            width: 170px;
+            height: 40px;
+            border: 1px solid #fff;
+            color: #fff;
+            line-height: 40px;
+        }
+        img {
+            display: block;
+            width: 430px;
+        }
+        &:nth-of-type(1) {
+            height: 566px;
+            position: relative;
+            &::before {
+                content: "";
+                display: block;
+                width: 0px;
+                height: 0px;
+                border-right: 25px solid #fff;
+                border-top: 15px solid transparent;
+                border-bottom: 15px solid transparent;
+                position: absolute;
+                top: 50%;
+                left: -25px;
+                margin-top: -15px;
+            }
+            .sintro__section--title {
+                margin-top: 150px;
+            }
+            .sintro__section--more {
+                color: #e74f4d;
+                border: 1px solid #e74f4d;
+            }
+            ul li {
+                cursor: pointer;
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                border: 1px solid #b0b0b0;
+                display: inline-block;
+                margin: 0 10px;
+                &:hover,&:first-child {
+                    background: #b0b0b0;
+                }
+            }
+        }
+        &:nth-of-type(2) {
+            width: 425px;
+            background: #e74f4d;
+            color: #fff;
+           
+        }
+        &:nth-of-type(3) {
+            width: 425px;
+            position: relative;
+            color: #000;
+            .sintro__section--smbd {
+                border: 1px solid #000;
+            }
+            .sintro__section--more {
+                color: #e74f4d;
+                border: 1px solid #e74f4d;
+            }
+            &::before {
+                content: "";
+                display: block;
+                width: 0px;
+                height: 0px;
+                border-left: 25px solid #fff;
+                border-top: 15px solid transparent;
+                border-bottom: 15px solid transparent;
+                position: absolute;
+                top: 50%;
+                right: -25px;
+                margin-top: -15px;
+            }
+        }
+    }
+}
+
+// join us
+.joinUs{
+    padding: 110px 140px 160px;
+    text-align: center;
+    overflow: hidden;
+    &__header {
+        width: 430px;
+        margin: 0 auto;
+        &--title {
+            font-size: 21px;
+        }
+        &--smbd {
+            @extend .search__container--smbd;
+            border: 1px solid #E74F4D;
+        }
+        &--desc {
+            font-size: 12px;
+            color:#aaa;
+        }
+    }
+    &__protocol {
+        float: left;
+        margin-top: 100px;
+        width:290px;
+        text-align: start;
+        height:200px;
+        background: #f5f5f5;
+        
+    }
+    &__form {
+        float: right;
+        margin-top: 100px;
+        width: 640px;
+        height: 200px;
+        background: #f5f5f5;
+    }
+
 }
