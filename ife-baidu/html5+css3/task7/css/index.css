@@ -100,7 +100,9 @@ select::-ms-expand { display: none; }
 .joinUs__protocol--desc { font-size: 12px; line-height: 24px; margin: 10px 0 0 0; color: #9d9b9a; }
 .joinUs__protocol--more { font-size: 12px; color: #9d9b9a; float: right; }
 .joinUs__protocol--more::before { content: "◇"; margin-right: 5px; }
-.joinUs__form { float: right; margin-top: 100px; width: 640px; text-align: justify; }
-.joinUs__form--text { width: 270px; height: 40px; border: none; outline: none; background: #EDEDEF; padding: 0 20px; margin: 20px 0; }
+.joinUs__form { float: right; margin-top: 90px; width: 640px; text-align: justify; }
+.joinUs__form--text { width: 270px; height: 40px; border: none; outline: none; background: #EDEDEF; padding: 0 20px; margin: 10px 0; }
+.joinUs__form--textarea { box-sizing: border-box; width: 100%; height: 100px; resize: none; padding: 10px 20px; border: none; outline: none; background: #EDEDEF; margin: 10px 0; }
+.joinUs__form--submit { width: 100%; height: 40px; outline: none; border: none; background: #EDEDEF; font-size: 14px; }
 
 /*# sourceMappingURL=index.css.map */
