@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta name="keywords" content=" " >
+    <meta name="description" content=" " >
+    <title></title>
+</head>
+<body>
+        <div class="wrapper">
+                <div class="container">
+                    <div class="logo" id="logo">
+                         <img class="logo-img" src="" alt="">
+                    </div>
+                    <nav class="navigation">
+                        <a href="" class="nav-item" name="nav-item">nav-1</a>
+                        <a href="" class="nav-item" name="nav-item">nav-2</a>
+                        <a href="" class="nav-item" name="nav-item">nav-3</a>
+                        <a href="" class="nav-item" name="nav-item">nav-4</a>
+                        <a href="" class="nav-item" name="nav-item">nav-5</a>
+                    </nav>
+                  
+                </div>
+            </div>
+
+    <script>
+        //  querySelector  与 getElement
+        //  作用： 选取dom 元素
+        // 区别点1 ： 所属的标准不同
+        //         querySelector  属于W3C的 Selector API 规范；
+        //         getELement*    属于W3C的 DOM 规范；
+
+
+        // 区别点2： 传递的参数不同， querySelector 传递的参数必须符合css 规范， 否则会抛出异常
+        // var id1 = document.getElementById('3nav-item-10');
+
+        //   不合法的参数会报错
+        // var id2 = document.querySelector('#3nav-item-10')
+
+
+        // 区别点3： 获取单个元素的性能
+        // var id1 = document.getElementById('nav-item-1');
+
+        // var id2 = document.querySelector('#nav-item-1');
+
+        // console.log(id1 === id2); // true
+
+        // console.time('getEById');
+        // for (var i = 0; i < 1e6; i++ ){
+        //     document.getElementById('nav-item-1');
+        // }
+        // console.timeEnd('getEById');
+
+        // console.time('querySel');
+        // for (var i = 0; i < 1e6; i++ ){
+        //     document.querySelector('#nav-item-1');
+        // }
+        // console.timeEnd('querySel');
+
+        // //  批量获取元素的性能
+        // console.time('querySelectorAll');
+        // for (var i = 0; i < 1e5; i++ ){
+        //     document.querySelectorAll('.nav-item');
+        // }
+        // console.timeEnd('querySelectorAll')
+
+
+        // console.time('byClassName');
+        // for (var i = 0; i < 1e5; i++ ){
+        //     document.getElementsByClassName('nav-item');
+        // }
+        // console.timeEnd('byClassName')
+
+        // console.time('byName');
+        // for (var i = 0; i < 1e5; i++ ){
+        //     document.getElementsByName('nav-item');
+        // }
+        // console.timeEnd('byName')
+
+        // console.time('byTagName');
+        // for (var i = 0; i < 1e5; i++ ){
+        //     document.getElementsByTagName('nav-item');
+        // }
+        // console.timeEnd('byTagName')
+
+
+        console.log("选取单个元素");
+let getLogo = document.getElementById('logo');
+let queryLogo = document.querySelector('#logo');
+
+console.log(getLogo === queryLogo);
+
+console.time('queryLogo');
+for (var i=0; i<1e3; i++) {
+  document.querySelector('#logo');
+}
+console.timeEnd('queryLogo');
+
+console.time('getLogo');
+for (var i=0; i<1e3; i++) {
+  document.getElementById('logo');
+}
+console.timeEnd('getLogo');
+    </script>
+</body>
+</html>
