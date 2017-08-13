@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta name="keywords" content=" " >
+    <meta name="description" content=" " >
+    <title>队列</title>
+    <style>
+        .wrapper{
+            margin: 100px auto;
+            width: 800px;
+            height: 300px;
+            border: 1px dashed #b0b0b0;    
+        }
+        .wrapper__queue {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            width: 100%;
+            height: 70px;
+            border-bottom: 1px solid #999;
+        }
+        .wrapper__queue li {
+            box-sizing: border-box;
+            /* float: right; */
+            float: left;
+            padding: 0 8px;
+            height: 50px;
+            background: deepskyblue;
+            color: #fff;
+            margin: 10px 5px;
+            text-align: center;
+            line-height: 50px;
+            border-radius: 5px;
+        }
+        .wrapper__input{
+            text-align: center;
+        }
+        .wrapper__input input {
+            width: 300px;
+            height: 40px;
+            font-size: 14px;
+            border: none;    
+            background: #eee;
+            outline: none;
+            margin-top: 80px;
+            border-radius: 5px;
+            padding: 3px 10px;
+        }
+        .wrapper__button {
+            text-align: center;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <ul class="wrapper__queue" id="result">
+
+         </ul>
+        <section class="wrapper__input">
+            <input type="text" id="js-num">
+        </section>
+        <section class="wrapper__button">
+            <button class="wrapper__button--in" id="left-in">左侧入</button>
+            <button class="wrapper__button--in" id="right-in">右侧入</button>
+            <button class="wrapper__button--out" id="left-out">左侧出</button>
+            <button class="wrapper__button--out" id="right-out">右侧出</button>
+        </section>  
+    </div>
+    <script>
+        (function(){ 
+            var log = console.log;
+            //  队列
+            var Queue = (function(){
+                let queue = []
+                return {
+                    // 从左推进队列
+                    leftPush:function(num) {
+                        queue.unshift(num);
+                    },
+                    // 从右推进队列
+                    rightPush:function(num) {
+                        queue.push(num)
+                    },
+                    // 移除最左边的元素
+                    leftOut:function() {
+                        return queue.shift()
+                    },
+                    // 移除最右边的元素
+                    rightOut:function() {
+                        return queue.pop()
+                    },
+                    delete:function(index) {
+                        queue.splice(index,1);
+                    },
+                    size:function() {
+                        return queue.length
+                    },
+                    iterator:function() {
+                        let i = 0
+                        let size = this.size()
+                        return {
+                            hasNext:function(){
+                                if(!size) return false
+                                return i < size
+                            },
+                            next:function(){
+                                return {index:i,value:queue[i++],}
+                            }
+                        }
+                    },
+                };
+            })();
+
+            function renderer(iterator) {
+                var result = document.getElementById('result')
+                // 清空 
+                result.innerHTML = ""
+                while(iterator.hasNext()) {
+                    var current = iterator.next();
+                    var li = document.createElement('li')
+                    li.setAttribute('data-index',current.index)
+                    li.innerHTML = current.value
+                    result.appendChild(li)
+                }
+            }
+
+           var numInput = document.getElementById('js-num')
+           var leftIn = document.getElementById('left-in')
+           leftIn.onclick = function(e){
+                e.stopPropagation()
+                Queue.leftPush(numInput.value)
+                renderer(Queue.iterator())
+                numInput.value = ''
+           }
+
+           var rightIn = document.getElementById('right-in')
+           rightIn.onclick = function(e) {
+               e.stopPropagation()
+               Queue.rightPush(numInput.value)
+               renderer(Queue.iterator())
+               numInput.value = ''
+           }
+
+           var leftOut = document.getElementById('left-out')
+           leftOut.onclick = function(e) {
+               e.stopPropagation()
+               Queue.leftOut()
+               renderer(Queue.iterator())
+           }
+
+           var rightOut = document.getElementById('right-out')
+           rightOut.onclick = function(e) {
+               e.stopPropagation()
+               Queue.rightOut()
+               renderer(Queue.iterator())
+           }
+
+           var result = document.getElementById('result')
+           log(result)
+           result.onclick = function(evt) {
+               if (evt.target instanceof HTMLLIElement) {
+                    var flag = confirm('确认删除该条数据吗？')
+                    if (flag) {
+                        Queue.delete(evt.target.getAttribute('data-index'))
+                        renderer(Queue.iterator())
+                    }
+               }
+           }
+        })();
+    </script>
+</body>
+</html>
