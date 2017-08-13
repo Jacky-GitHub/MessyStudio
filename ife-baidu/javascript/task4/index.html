@@ -80,11 +80,14 @@
                 return {
                     // 从左推进队列
                     leftPush:function(num) {
-                        queue.unshift(num)
+                        if (!isNaN(parseInt(num)))
+                        queue.unshift(parseInt(num))
                     },
                     // 从右推进队列
                     rightPush:function(num) {
-                        queue.push(num)
+                        if (!isNaN(parseInt(num)))
+                        queue.push(parseInt(num))
+    
                     },
                     // 移除最左边的元素
                     leftOut:function() {
