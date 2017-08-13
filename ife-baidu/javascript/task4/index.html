@@ -73,14 +73,14 @@
     </div>
     <script>
         (function(){ 
-            var log = console.log;
+            var log = console.log
             //  队列
             var Queue = (function(){
                 let queue = []
                 return {
                     // 从左推进队列
                     leftPush:function(num) {
-                        queue.unshift(num);
+                        queue.unshift(num)
                     },
                     // 从右推进队列
                     rightPush:function(num) {
@@ -95,11 +95,12 @@
                         return queue.pop()
                     },
                     delete:function(index) {
-                        queue.splice(index,1);
+                        queue.splice(index,1)
                     },
                     size:function() {
                         return queue.length
                     },
+                    // 利用闭包完成迭代器
                     iterator:function() {
                         let i = 0
                         let size = this.size()
@@ -121,7 +122,7 @@
                 // 清空 
                 result.innerHTML = ""
                 while(iterator.hasNext()) {
-                    var current = iterator.next();
+                    var current = iterator.next()
                     var li = document.createElement('li')
                     li.setAttribute('data-index',current.index)
                     li.innerHTML = current.value
@@ -161,11 +162,9 @@
            }
 
            var result = document.getElementById('result')
-           log(result)
            result.onclick = function(evt) {
                if (evt.target instanceof HTMLLIElement) {
-                    var flag = confirm('确认删除该条数据吗？')
-                    if (flag) {
+                    if (confirm('确认删除该条数据吗？')) {
                         Queue.delete(evt.target.getAttribute('data-index'))
                         renderer(Queue.iterator())
                     }
