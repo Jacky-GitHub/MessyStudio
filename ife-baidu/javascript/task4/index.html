@@ -84,6 +84,8 @@
             <button class="wrapper__button--out" id="left-out">左侧出</button>
             <button class="wrapper__button--out" id="right-out">右侧出</button>
             <button class="wrapper__button--sort" id="sort">排序</button>
+            <button class="wrapper__button--filter" id="filter">去重</button>
+            <button class="wrapper__button--clear" id="clear">清空</button>
         </section>  
     </div>
     <script>
@@ -94,13 +96,18 @@
                 let queue = []
                 let newItem = null
                 let maxLength = 60
+                let max = 100
+                let min = 10
                 return {
+                    clear:function(){
+                        queue = []
+                    },
                     // 随机生成60个
                     random:function(){
-                        queue = []
+                       this.clear()
                         for (let i=0; i<maxLength; i++) {
-                            let randomNum = Math.floor(Math.random()*91) + 10
-                            queue.push(randomNum);
+                            let randomNum = Math.floor(Math.random() * (max - min + 1)) + min
+                            queue.push(randomNum)
                         }
                     },
                     // 从左推进队列
@@ -128,6 +135,17 @@
                     sort:function() {
                         queue.sort((a,b) => a-b)
                     },
+                    filter:function() {
+                        let newQueue = []
+                        let itor = this.iterator()
+                        while (itor.hasNext()) {
+                            let curr = itor.next().value
+                            if (newQueue.indexOf(curr) === -1) {
+                                newQueue.push(curr)
+                            }
+                        }
+                        queue = newQueue
+                    },
                     delete:function(index) {
                         queue.splice(index,1)
                         newItem = null
@@ -145,13 +163,7 @@
                                 return i < size
                             },
                             next:function(){
-                                if (newItem === 0 && i === 0) {
-                                    return {index:i,value:queue[i++],newItem:true,}
-                                } else if (newItem === size - 1 && i === size - 1) {
-                                    return {index:i,value:queue[i++],newItem:true,}
-                                } else {
-                                    return {index:i,value:queue[i++],newItem:false,}
-                                }
+                                return {index:i,newItem:newItem === i,value:queue[i++],}
                             }
                         }
                     },
@@ -236,6 +248,18 @@
            var sort = document.getElementById('sort')
            sort.onclick = function(e) {
                 Queue.sort();
+                renderer(Queue.iterator())
+           }
+
+           var filter = document.getElementById('filter')
+           filter.onclick = function(e) {
+                Queue.filter();
+                renderer(Queue.iterator())
+           }
+
+           var clear = document.getElementById('clear')
+           clear.onclick = function(e) {
+                Queue.clear();
                 renderer(Queue.iterator())
            }
 
