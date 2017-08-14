@@ -11,7 +11,7 @@
     <style>
         .wrapper{
             margin: 100px auto;
-            width: 800px;
+            width: 1020px;
             height: 300px;
             border: 1px dashed #b0b0b0;    
         }
@@ -20,21 +20,34 @@
             padding: 0;
             list-style-type: none;
             width: 100%;
-            height: 70px;
+            height:100px;
+            padding-top:20px;
             border-bottom: 1px solid #999;
         }
         .wrapper__queue li {
             box-sizing: border-box;
-            /* float: right; */
-            float: left;
-            padding: 0 8px;
-            height: 50px;
-            background: deepskyblue;
+            display: inline-block;
+            width: 15px;
+            min-height: 10px;
+            max-height: 100px;
+            background: #f00;
             color: #fff;
-            margin: 10px 5px;
+            margin: 70px 1px 0;
             text-align: center;
-            line-height: 50px;
-            border-radius: 5px;
+            color: black;
+            position: relative;
+        }
+        .wrapper__queue li b {
+            position: absolute;
+            top: -20px;
+            left: 0;
+            font-size: 12px;
+        }
+        .wrapper__queue li:hover {
+            background: #ddd;
+        }
+        .wrapper__intro {
+            text-align: center;
         }
         .wrapper__input{
             text-align: center;
@@ -46,7 +59,7 @@
             border: none;    
             background: #eee;
             outline: none;
-            margin-top: 80px;
+            margin-top: 20px;
             border-radius: 5px;
             padding: 3px 10px;
         }
@@ -59,16 +72,18 @@
 <body>
     <div class="wrapper">
         <ul class="wrapper__queue" id="result">
-
          </ul>
+         <p class="wrapper__intro">只能输入60个10~100以内的整数</p>
         <section class="wrapper__input">
             <input type="text" id="js-num">
         </section>
         <section class="wrapper__button">
+            <button class="wrapper__button--random" id="random">随机生成</button>
             <button class="wrapper__button--in" id="left-in">左侧入</button>
             <button class="wrapper__button--in" id="right-in">右侧入</button>
             <button class="wrapper__button--out" id="left-out">左侧出</button>
             <button class="wrapper__button--out" id="right-out">右侧出</button>
+            <button class="wrapper__button--sort" id="sort">排序</button>
         </section>  
     </div>
     <script>
@@ -77,28 +92,45 @@
             //  队列
             var Queue = (function(){
                 let queue = []
+                let newItem = null
+                let maxLength = 60
                 return {
+                    // 随机生成60个
+                    random:function(){
+                        queue = []
+                        for (let i=0; i<maxLength; i++) {
+                            let randomNum = Math.floor(Math.random()*91) + 10
+                            queue.push(randomNum);
+                        }
+                    },
                     // 从左推进队列
                     leftPush:function(num) {
                         if (!isNaN(parseInt(num)))
                         queue.unshift(parseInt(num))
+                        newItem = 0
                     },
                     // 从右推进队列
                     rightPush:function(num) {
                         if (!isNaN(parseInt(num)))
                         queue.push(parseInt(num))
-    
+                        newItem = this.size() - 1
                     },
                     // 移除最左边的元素
                     leftOut:function() {
                         return queue.shift()
+                        newItem = null
                     },
                     // 移除最右边的元素
                     rightOut:function() {
                         return queue.pop()
+                        newItem = null
+                    },
+                    sort:function() {
+                        queue.sort((a,b) => a-b)
                     },
                     delete:function(index) {
                         queue.splice(index,1)
+                        newItem = null
                     },
                     size:function() {
                         return queue.length
@@ -113,7 +145,13 @@
                                 return i < size
                             },
                             next:function(){
-                                return {index:i,value:queue[i++],}
+                                if (newItem === 0 && i === 0) {
+                                    return {index:i,value:queue[i++],newItem:true,}
+                                } else if (newItem === size - 1 && i === size - 1) {
+                                    return {index:i,value:queue[i++],newItem:true,}
+                                } else {
+                                    return {index:i,value:queue[i++],newItem:false,}
+                                }
                             }
                         }
                     },
@@ -128,26 +166,57 @@
                     var current = iterator.next()
                     var li = document.createElement('li')
                     li.setAttribute('data-index',current.index)
-                    li.innerHTML = current.value
+                    li.style.height = `${current.value}px`
+                    li.style.marginTop = `${100 - current.value}px`
+                    if (current.newItem) {
+                        li.style.background = "deepskyblue"
+                    }
+                    var b = document.createElement('b')
+                    b.innerHTML = current.value
+                    li.appendChild(b)
                     result.appendChild(li)
                 }
             }
 
            var numInput = document.getElementById('js-num')
+           var random = document.getElementById('random')
+           random.onclick = function(e) {
+              Queue.random();
+              renderer(Queue.iterator())
+           }
            var leftIn = document.getElementById('left-in')
            leftIn.onclick = function(e){
                 e.stopPropagation()
-                Queue.leftPush(numInput.value)
-                renderer(Queue.iterator())
-                numInput.value = ''
+                //  校验数字输入  判断长度
+                if (Queue.size() < 60) {
+                    if (10 <= parseInt(numInput.value) && parseInt(numInput.value) <= 100) {
+                        Queue.leftPush(numInput.value)
+                        renderer(Queue.iterator())
+                        numInput.value = ''
+                    } else {
+                        alert("输入有误，只能输入10~100之间的整数！");
+                    }
+                } else {
+                    alert('超过指定的长度 60')
+                } 
+                
            }
 
            var rightIn = document.getElementById('right-in')
            rightIn.onclick = function(e) {
-               e.stopPropagation()
-               Queue.rightPush(numInput.value)
-               renderer(Queue.iterator())
-               numInput.value = ''
+                e.stopPropagation()
+                if (Queue.size() < 60) {
+                    if (10 <= parseInt(numInput.value) && parseInt(numInput.value) <= 100) {
+                        Queue.rightPush(numInput.value)
+                        renderer(Queue.iterator())
+                        numInput.value = ''
+                    } else {
+                        alert("输入有误，只能输入10~100之间的整数！");
+                    }
+                } else {
+                    alert('超过指定的长度')
+                }
+               
            }
 
            var leftOut = document.getElementById('left-out')
@@ -162,6 +231,12 @@
                e.stopPropagation()
                Queue.rightOut()
                renderer(Queue.iterator())
+           }
+
+           var sort = document.getElementById('sort')
+           sort.onclick = function(e) {
+                Queue.sort();
+                renderer(Queue.iterator())
            }
 
            var result = document.getElementById('result')
